@@ -1,8 +1,23 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './App'
 
-Vue.config.productionTip = false
+
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+import todoModule from './modules/Todo'
+
+const store = new Vuex.Store({
+  modules: {
+    todoModule
+  }
+})
+
+//Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  el: '#app',
+  store,
+  template: '<App/>',
+  components: { App }
+})
